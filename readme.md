@@ -164,9 +164,9 @@ Keep in mind that *request_naws()* and *request_terminal_type()* are not instant
 
 ## Demo Code
 
-  # *hello_demo.py* - As short as it gets; creates a server and greets clients with a canned welcome. http://code.google.com/p/miniboa/source/browse/trunk/hello_demo.py
-  # *handler_demo.py* - demonstrates how to plug your custom *on_connect()* and *on_disconnect()* functions into the server. http://code.google.com/p/miniboa/source/browse/trunk/handler_demo.py
-  # *chat_demo.py* - a simple chat room that handles connections, disconnections, and echoing messages between connected clients. http://code.google.com/p/miniboa/source/browse/trunk/chat_demo.py 
+  # hello_demo.py - As short as it gets; creates a server and greets clients with a canned welcome. 
+  # handler_demo.py - demonstrates how to plug your custom *on_connect()* and *on_disconnect()* functions into the server. 
+  # chat_demo.py - a simple chat room that handles connections, disconnections, and echoing messages between connected clients. 
 
 ----
 
