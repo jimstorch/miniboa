@@ -1,5 +1,3 @@
-![logo](/docs/illustrations/miniboa.png)
-
 You can contact me at: 'wvzfgbepu@tznvy.pbz'.encode('rot13') 
 
 ----
@@ -40,26 +38,26 @@ Future versions of Miniboa may add support for both of these features.
 
 Telnet servers are instances of the TelnetServer class from miniboa.async.  Creating a Telnet Server is pretty simple.  In fact, you can run one with the following three lines of code:
 
-{{{
+```
 from miniboa import TelnetServer
 server = TelnetServer()
 while True: server.poll()
-}}}
+```
 
 This will launch a server listening on the default port, 7777, that accepts Telnet connections and sends a simple greeting;
-{{{
+```
 $ telnet localhost 7777
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
 Greetings from Miniboa!  Now it's time to add your code.
-}}}
+```
 
 Initialization arguments for TelnetServer are;
 
-{{{
+```
 server = TelnetServer(port=8888, address='127.0.0.1', on_connect=my_connect_handler, on_disconnect=my_disconnect_handler)
-}}} 
+```
 
   * *port* - the network port you want the server to listen for new connections on.  You should be aware that on Linux, port numbers 1024 and below are restricted for use by normal users.  The default is port 7777.
   * *address* - this is the address of the _local network interface_ you wish the server to listen on.  You can usually omit this parameter (or pass an empty string; '') which causes it to listen on any viable NIC.  Unless your server is directly connected to the Internet (doubtful today) do not set this to the Internet IP address of your server.  The default is an empty string.  
@@ -90,7 +88,7 @@ You can set or change these after creating the server:
 
 Here's a simple example with custom *on_connect()* and *on_disconnect()* handlers:
 
-{{{
+```
 from miniboa import TelnetServer
 
 
@@ -119,7 +117,7 @@ server.on_disconnect=my_on_disconnect
 print "\n\nStarting server on port %d.  CTRL-C to interrupt.\n" % server.port
 while True:
     server.poll()
-}}}
+```
 
 
 ----
