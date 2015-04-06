@@ -1,4 +1,4 @@
-http://bogboa.googlecode.com/svn/trunk/docs/illustrations/miniboa.png
+!(http://bogboa.googlecode.com/svn/trunk/docs/illustrations/miniboa.png)
 
 You can contact me at: 'wvzfgbepu@tznvy.pbz'.encode('rot13') 
 
@@ -13,7 +13,7 @@ http://code.google.com/p/miniboa-py3/
 
 ----
 
-= Overview =
+## Overview
 
 Miniboa is a bare-bones Telnet server to use as the base for a MUD or similar interactive server.  Miniboa has several nice features for this type of application.
 
@@ -26,7 +26,7 @@ To use Miniboa, you create a *Telnet Server* object listening at a specified por
 
 For example, let's say Mike and Joe connect to your MUD server.  Telnet Server will call your *on_connect()* function with Mike's Telnet Client object, and then again with Joe's Telnet Client object.  If Mike's power goes out, Telnet Server will call your *on_disconnect()* function with Mike's Telnet Client object (same exact one).
 
-== Why NOT use Miniboa? ==
+## Why NOT use Miniboa?
 
 Miniboa provides linemode input only -- in other words, you get a full line of client input at a time, not individual keypresses.  While this works well for the default mode of most Telnet clients, it may not suit authors who wish to add advanced options like auto-complete and multi-line editing.
 
@@ -36,7 +36,7 @@ Future versions of Miniboa may add support for both of these features.
 
 ----
 
-= Telnet Server =
+## Telnet Server
 
 Telnet servers are instances of the TelnetServer class from miniboa.async.  Creating a Telnet Server is pretty simple.  In fact, you can run one with the following three lines of code:
 
@@ -68,7 +68,7 @@ server = TelnetServer(port=8888, address='127.0.0.1', on_connect=my_connect_hand
   * *timeout* - length of time to wait for user input during each poll().  Default is 5 milliseconds.
 
 
-== Server Properties ==
+## Server Properties
 
 The follow properties can be read from.  
 
@@ -82,7 +82,7 @@ You can set or change these after creating the server:
   * *timeout* - length of time to wait on user input during a *pol()*.  Default is .005 seconds.  Increasing this value also lowers CPU usage.    
 
 
-== Server Methods ==
+## Server Methods
 
   * *poll()* - this is where the server looks for new connections and processes existing connection that need to send and/or receive blocks of data with the players.  A call to this method needs to be made from within your program's game loop.
   * *connection_count()* - returns the number of current connections.
@@ -124,13 +124,13 @@ while True:
 
 ----
 
-= Telnet Clients =
+## Telnet Clients
 
 Client objects are instances of the TelnetClient class from miniboa.telnet.  These are a mixture of a state machine, send & receive buffers, and some convenience methods.  They are created when a new connection is detected by the TelnetServer and passed to your *on_connect()* and *on_disconnect()* handler functions.  Your application will probably maintain a list (or some other kind of reference) to these clients so it's important to delete references in your on_disconnect handler or else dead ones will not get garbage collected.
 
 The client buffers user's input and breaks it into lines of text that can be retrieved using the *get_command()* method.
 
-== Client Properties ==
+## Client Properties
 
   * *active* - boolean value, True if the client is in good health.  Setting this to False will cause the TelnetServer to drop the user (and then call your *on_disconnect()* function with that client).   
   * *cmd_ready* - this is set to True whenever the user enters some text and then presses the enter key.  The line of text can be obtained by calling the *get_command()* method.
@@ -143,7 +143,7 @@ The client buffers user's input and breaks it into lines of text that can be ret
   * *terminal_type* - the client's terminal type.  Defaults to 'unknown terminal' and changed if *request_terminal_type()* is called AND the player's client supports this IAC.  See RFC 779.  
 
 
-== Client Methods ==
+## Client Methods
 
   * *send()* - append the given text to the client's send buffer which is actually transmitted during a TelnetServer.poll() call.  Python newlines ('\n') are automatically converted to '\r\n' (carriage return + new line) per Telnet specifications. 
   * *send_cc()* - send the given text and convert caret codes into ANSI color sequences.  See the Wiki for a list of caret codes.  See http://code.google.com/p/miniboa/wiki/CaretCodes for a list.
@@ -164,9 +164,7 @@ Keep in mind that *request_naws()* and *request_terminal_type()* are not instant
    
 ----
 
-= Demo Code =
-
-All demos are included in(and linked from) the SVN trunk.
+## Demo Code
 
   # *hello_demo.py* - As short as it gets; creates a server and greets clients with a canned welcome. http://code.google.com/p/miniboa/source/browse/trunk/hello_demo.py
   # *handler_demo.py* - demonstrates how to plug your custom *on_connect()* and *on_disconnect()* functions into the server. http://code.google.com/p/miniboa/source/browse/trunk/handler_demo.py
@@ -174,7 +172,7 @@ All demos are included in(and linked from) the SVN trunk.
 
 ----
 
-= License =
+## License
 
 Copyright 2010 Jim Storch.
 
@@ -183,16 +181,3 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-----
-
-= Change Log =
-
-31 Jan 2010, Rev 40
-
-Changed ANSI Caret Codes in response to this ticket;
-http://code.google.com/p/miniboa/issues/detail?id=4
-
-27 Jan 2010, Rev 38
-
-I moved the non-functional character mode code into a separate branch.  No point in cluttering up the trunk with it.
