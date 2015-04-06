@@ -1,4 +1,4 @@
-![logo](bogboa.googlecode.com/svn/trunk/docs/illustrations/miniboa.png)
+![logo](http://bogboa.googlecode.com/svn/trunk/docs/illustrations/miniboa.png)
 
 You can contact me at: 'wvzfgbepu@tznvy.pbz'.encode('rot13') 
 
