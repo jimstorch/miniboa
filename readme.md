@@ -2,12 +2,11 @@ You can contact me at: 'wvzfgbepu@tznvy.pbz'.encode('rot13')
 
 ----
 
-Update July 18, 2012
+Update May 14, 2019
 
-Big thanks to pr0ps for doing a Python 3 port of Miniboa!  Please check out his Miniboa-py3 project page: 
+I recommend anyone interested in Miniboa please use Shmup's fork for Python 2 AND 3 at:
 
-http://code.google.com/p/miniboa-py3/
-
+https://github.com/shmup/miniboa
 
 ----
 
